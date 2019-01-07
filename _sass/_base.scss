@@ -12,9 +12,9 @@ article, aside, figcaption, figure, footer, header, nav, section {
     display: block;
 }
 h1, h2, h3, h4, stong {
-    margin-top: 1em;
-    padding-top: 1em;
-    line-height: 1.25;
+    margin-top: 0.75em;
+    padding-top: 0.75em;
+    line-height: 1.125;
     color: #333;
 }
 h1 {
@@ -34,7 +34,7 @@ ul, ol {
     padding-left: 40px;
 }
 p, figure {
-    margin: 1em 0;
+    margin: 0.75em 0;
 }
 a img {
     border: none;
