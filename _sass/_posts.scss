@@ -9,4 +9,15 @@
   @media only screen and (min-width: $cut) {
     width: 80%;
   }
+  a {
+    text-decoration: none;
+    margin: 0;
+    color: #e0e0e0;
+    &:hover{
+      color: $sec;
+    }
+    &:active {
+      color: $sec;
+    }
+  }
 }
