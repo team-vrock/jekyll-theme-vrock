@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=Abel');
 @import url('https://fonts.googleapis.com/css?family=Muli');
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
@@ -18,9 +17,8 @@ body {
     // font-family: 'Source Sans Pro', sans-serif;
     // font-family: 'Noto Sans', sans-serif; // 2nd choice
     // font-family: 'Muli', sans-serif; //2nd choice
-    // font-family: 'Nanum Gothic', sans-serif; //1st choice
+    font-family: 'Nanum Gothic', sans-serif; //1st choice
     // font-family: 'Rubik', sans-serif; //1st choice
-    font-family: 'Abel', sans-serif;
 }
 article, aside, figcaption, figure, footer, header, nav, section {
     display: block;
