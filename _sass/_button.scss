@@ -1,0 +1,13 @@
+.btn-primary {background: #d9230f!important; border: 1px solid #d9230f!important; font-weight: bold; color: rgba(255,255,255,0.75)!important;}
+.btn-primary:hover {color: rgba(255,255,255,0.9)!important;}
+.btn {
+    padding: 5px 10px!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+.btn-sm, .btn-group-sm>.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
