@@ -33,7 +33,7 @@
 
     if(readCookie('cookie-notice-dismissed')=='true') {
         {% if site.google-analytics %}
-            {% include /js/google-analytics.js %}
+            {% include_relative /js/google-analytics.js %}
         {% endif %}
     } else {
         $('#cookie-notice').show();
