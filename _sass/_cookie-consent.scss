@@ -1,0 +1,27 @@
+#cookie-notice {
+  padding: 20px 15px;
+  display: none;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #222;
+  color: rgba(255,255,255,0.8);
+}
+#cookie-notice
+
+a {
+  cursor: pointer;
+  margin-left: 10px;
+}
+@media only screen and (min-width: $cut) {
+    #cookie-notice 
+    span {
+      display: block;
+      padding-top: 3px;
+      margin-bottom: 13px;}
+    #cookie-notice
+    a {
+      position: relative;
+      bottom: 4px;}
+}
