@@ -1,5 +1,5 @@
 #cookie-notice {
-  padding-top: 30px;
+  padding-top: 10px;
   padding-right: 0px;
   padding-bottom: 10px;
   padding-left: 0px;
@@ -17,10 +17,14 @@
   position: relative;
 }
 
+#cookie-notice p {
+  margin: 0.75em 0;
+}
+
 #cookie-notice span {
   display: block;
-  padding-top: 20px;
-  margin-bottom: 13px;
+  // padding-top: 20px;
+  //margin-bottom: 13px;
 }
 
 @media only screen and (min-width: $cut) {
