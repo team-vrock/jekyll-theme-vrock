@@ -8,19 +8,17 @@
   background: #222;
   color: rgba(255,255,255,0.8);
 }
-#cookie-notice
-a {
+#cookie-notice a {
   position: fixed;
   margin-left: 4px;
 }
-span {
+#cookie-notice span {
   display: none;
   padding-top: 10px;
   margin-bottom: 13px;
 }
 @media only screen and (min-width: $cut) {
-    #cookie-notice 
-    a {
-      cursor: pointer;
-      bottom: 10px;}
+  #cookie-notice a {
+    cursor: pointer;
+    bottom: 10px;}
 }
