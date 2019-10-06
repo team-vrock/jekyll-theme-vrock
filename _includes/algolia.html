@@ -79,6 +79,13 @@
         instantsearch.widgets.refinementList({
             container: '#refinement-list',
             attribute: 'tags',
+            templates: {
+            item: `
+                <a href="{{url}}" class="tags-link">
+                {label}}<div class="tags-number">({{count}})</div>
+                </a>
+                `,
+  },
         })
     ]);
 
@@ -103,6 +110,7 @@
     }
 
     .ais-Hits {
+        font-size: inherit;
         color: inherit;
     }
 
