@@ -158,23 +158,28 @@
         transition: color 0.3s ease-out,
             background-color 0.3s ease-out,
             border-color 0.3s ease-out;
+    }
 
-        &:active {
-            background-color: $purple;
-            border-color: $purple;
-            color: #fff;
-            transition: color 0.3s ease-in,
-                background-color 0.3s ease-in,
-                border-color 0.3s ease-in;
-        }
-
-        &:hover {
-            background-color: $purple;
-            border-color: $purple;
-            color: #fff;
-            transition: color 0.3s ease-in,
-                background-color 0.3s ease-in,
-                border-color 0.3s ease-in;
-        }
+    .ais-RefinementList-item--selected {
+        display: table-cell;
+        line-height: 22px;
+        text-align: center;
+        vertical-align: middle;
+        width: 150px;
+        margin: 10px 10px;
+        padding: 5px;
+        color: #fff;
+        background-color: $purple;
+        border-color: $purple;
+        border: 2px solid $main;
+        border-radius: 22px;
+        text-align: center;
+        outline: none;
+        text-decoration: none;
+        font-size: 9pt;
+        cursor: pointer;
+        transition: color 0.3s ease-out,
+            background-color 0.3s ease-out,
+            border-color 0.3s ease-out;
     }
 </style>
