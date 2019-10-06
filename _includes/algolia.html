@@ -72,6 +72,13 @@ search.addWidget(
   })
 );
 
+instantsearch.widgets.refinementList({
+  container: '#search-tags',
+  attribute: 'tags',
+  // Optional parameters
+  operator: 'and'
+});
+
 search.start();
 </script>
 
