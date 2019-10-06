@@ -80,11 +80,13 @@
             container: '#refinement-list',
             attribute: 'tags',
             templates: {
-            item: `
-                <a href="{{url}}" class="tags-link">
-                {{label}}<div class="tags-number">({{count}})</div>
+                item(item) {
+                return `
+                <a href="${item.url}" class="tags-link">
+                    ${item.label}<div class="tags-number">${item.count}</div>
                 </a>
-                `,
+                `;
+            },
   },
         })
     ]);
