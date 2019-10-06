@@ -29,14 +29,28 @@ const hitTemplate = function(hit) {
 
   const content = hit._highlightResult.html.value;
 
-  return `
+/*   return `
     <div class="post-item">
       <span class="post-meta">${date}</span>
       <h2><a class="post-link" href="${url}">${title}</a></h2>
       {{#breadcrumbs}}<a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>{{/breadcrumbs}}
       <div class="post-snippet">${content}</div>
     </div>
+  `; */
+
+  return `
+  <div class="user-projects">
+    <div class="images-left">
+      <img alt="mountains" src="{{ post.image }}" />
+    </div>
+    <div class="contents-right">
+      <h3>${title}</h3>
+      <p>${content}</p>
+      <a class="project-link" href="${url}">Check it out</a>
+    </div>
+  </div>
   `;
+
 }
 
 
