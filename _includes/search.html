@@ -1,18 +1,18 @@
 <h2 id="searchlist">SEARCH</h2>
 <div id="search-searchbar"></div>
 
-<div class="post-list" id="search-hits">
+<div id="search-hits">
   {% for post in site.posts %}
-    <div class="user-projects">
-        <div class="images-left">
-        <img alt="mountains" src="{{ post.image }}" />
-        </div>
-        <div class="contents-right">
-        <h3>{{ post.title | escape }}</h3>
-        <p>{{ post.excerpt }}</p>
-        <a class="project-link" href="{{ post.url | relative_url }}">Check it out</a>
-        </div>
-        </div>
+  <div class="user-projects">
+    <div class="images-left">
+      <img alt="mountains" src="{{ post.image }}" />
+    </div>
+    <div class="contents-right">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt }}</p>
+      <a class="project-link" href="{{ post.url }}">Check it out</a>
+    </div>
+  </div>
   {% endfor %}
 </div>
 <div id="refinement-list"></div>
