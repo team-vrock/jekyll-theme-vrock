@@ -4,18 +4,18 @@
   <body>
       {% include header.html %}
       {% include navigation.html %}
+      <section id="about">
+        {% include about.html %}
+      </section>
+      <section id="projects">
+        {% include projects.html %}
+      </section>
       <section id="search">
           {% include search.html %}
           {% include algolia.html %}
       </section>
       <section id="tags">
           {% include tags.html %}
-      </section>
-      <section id="about">
-        {% include about.html %}
-      </section>
-      <section id="projects">
-        {% include projects.html %}
       </section>
         {{ content }}
       {% include footer.html %}
