@@ -10,12 +10,14 @@
       indexName: '{{ site.algolia.index_name }}'
     }); */
 
-    const algoliasearch = require('algoliasearch/lite');
-    const instantsearch = require('instantsearch.js').default;
+    const searchClient = algoliasearch(
+        '{{ site.algolia.application_id }}',
+        '{{ site.algolia.search_only_api_key }}'
+        );
 
     const search = instantsearch({
         indexName: '{{ site.algolia.index_name }}',
-        searchClient: algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}'),
+        searchClient,
     });
 
     const hitTemplate = function (hit) {
