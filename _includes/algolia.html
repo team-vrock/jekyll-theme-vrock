@@ -1,50 +1,57 @@
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js" integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css" integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js"
+    integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"
+    integrity="sha256-3Laj91VXexjTlFLgL8+vvIq27laXdRmFIcO2miulgEs=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
+    integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+    integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
 
 <script>
-/* const search = instantsearch({
-  appId: '{{ site.algolia.application_id }}',
-  apiKey: '{{ site.algolia.search_only_api_key }}',
-  indexName: '{{ site.algolia.index_name }}'
-}); */
+    /* const search = instantsearch({
+      appId: '{{ site.algolia.application_id }}',
+      apiKey: '{{ site.algolia.search_only_api_key }}',
+      indexName: '{{ site.algolia.index_name }}'
+    }); */
 
-const search = instantsearch({
-  indexName: '{{ site.algolia.index_name }}',
-  searchClient: algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}'),
-});
+    const algoliasearch = require('algoliasearch/lite');
+    const instantsearch = require('instantsearch.js').default;
 
-const hitTemplate = function(hit) {
-  let date = '';
-  if (hit.date) {
-    date = moment.unix(hit.date).format('MMM D, YYYY');
-  }
+    const search = instantsearch({
+        indexName: '{{ site.algolia.index_name }}',
+        searchClient: algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}'),
+    });
 
-  let url = `{{ site.baseurl }}${hit.url}#${hit.anchor}`;
-  let image = `{{ site.baseurl }}${hit.image}`;
+    const hitTemplate = function (hit) {
+        let date = '';
+        if (hit.date) {
+            date = moment.unix(hit.date).format('MMM D, YYYY');
+        }
 
-  const title = hit._highlightResult.title.value;
+        let url = `{{ site.baseurl }}${hit.url}#${hit.anchor}`;
+        let image = `{{ site.baseurl }}${hit.image}`;
 
-  let breadcrumbs = '';
-  if (hit._highlightResult.headings) {
-    breadcrumbs = hit._highlightResult.headings.map(match => {
-      return `<span class="post-breadcrumb">${match.value}</span>`
-    }).join(' > ')
-  }
+        const title = hit._highlightResult.title.value;
 
-  const content = '{{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}';
+        let breadcrumbs = '';
+        if (hit._highlightResult.headings) {
+            breadcrumbs = hit._highlightResult.headings.map(match => {
+                return `<span class="post-breadcrumb">${match.value}</span>`
+            }).join(' > ')
+        }
 
-/*   return `
-    <div class="post-item">
-      <span class="post-meta">${date}</span>
-      <h2><a class="post-link" href="${url}">${title}</a></h2>
-      {{#breadcrumbs}}<a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>{{/breadcrumbs}}
-      <div class="post-snippet">${content}</div>
-    </div>
-  `; */
+        const content = '{{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}';
 
-  return `
+        /*   return `
+            <div class="post-item">
+              <span class="post-meta">${date}</span>
+              <h2><a class="post-link" href="${url}">${title}</a></h2>
+              {{#breadcrumbs}}<a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>{{/breadcrumbs}}
+              <div class="post-snippet">${content}</div>
+            </div>
+          `; */
+
+        return `
   <div class="user-projects">
     <div class="images-left">
       <img alt="mountains" src="${image}" />
@@ -57,64 +64,71 @@ const hitTemplate = function(hit) {
   </div>
   `;
 
-}
-
-search.addWidgets([
-instantsearch.widgets.searchBox({
-    container: '#search-searchbar',
-    placeholder: 'Search into posts...',
-    poweredBy: true // This is required if you're on the free Community plan
-  }),
-
-  instantsearch.widgets.hits({
-    container: '#search-hits',
-    templates: {
-      item: hitTemplate
     }
-  })
-]);
 
-search.start();
+    search.addWidgets([
+        instantsearch.widgets.searchBox({
+            container: '#search-searchbar',
+            placeholder: 'Search into posts...',
+            poweredBy: true // This is required if you're on the free Community plan
+        }),
+
+        instantsearch.widgets.hits({
+            container: '#search-hits',
+            templates: {
+                item: hitTemplate
+            }
+        })
+    ]);
+
+    search.start();
 
 </script>
 
 <style>
-.ais-search-box {
-  max-width: 100%;
-  margin-bottom: 15px;
-}
-.post-item {
-  margin-bottom: 30px;
-}
-.post-link .ais-Highlight {
-  color: #111;
-  font-style: normal;
-  text-decoration: underline;
-}
-.ais-Highlight {
-  color: #111;
-  background:#ff00ae;
-  font-style: normal;
-}
+    .ais-search-box {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
 
-.post-breadcrumbs {
-  color: #424242;
-  display: block;
-}
-.post-breadcrumb {
-  font-size: 18px;
-  color: #424242;
-}
-.post-breadcrumb .ais-Highlight {
-  font-weight: bold;
-  font-style: normal;
-}
-.post-snippet .ais-Highlight {
-  color: #2a7ae2;
-  font-style: normal;
-  font-weight: bold;
-}
-.post-snippet img {
-  display: none;
-}
+    .post-item {
+        margin-bottom: 30px;
+    }
+
+    .post-link .ais-Highlight {
+        color: #111;
+        font-style: normal;
+        text-decoration: underline;
+    }
+
+    .ais-Highlight {
+        color: #111;
+        background: #ff00ae;
+        font-style: normal;
+    }
+
+    .post-breadcrumbs {
+        color: #424242;
+        display: block;
+    }
+
+    .post-breadcrumb {
+        font-size: 18px;
+        color: #424242;
+    }
+
+    .post-breadcrumb .ais-Highlight {
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    .post-snippet .ais-Highlight {
+        color: #2a7ae2;
+        font-style: normal;
+        font-weight: bold;
+    }
+
+    .post-snippet img {
+        display: none;
+    }
 </style>
