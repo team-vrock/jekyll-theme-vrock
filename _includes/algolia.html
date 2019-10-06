@@ -82,6 +82,11 @@
             templates: {
                 item: hitTemplate
             }
+        }),
+
+        instantsearch.widgets.refinementList({
+            container: '#refinement-list',
+            attribute: 'tags',
         })
     ]);
 
