@@ -59,8 +59,21 @@
         instantsearch.widgets.hits({
             container: '#search-hits',
             templates: {
-                item: hitTemplate
-            }
+                item(hit) {
+                    return `
+                    <div class="user-projects">
+                    <div class="images-left">
+                    <img alt="mountains" src="${hit.image}" />
+                    </div>
+                    <div class="contents-right">
+                    <h3>${hit.title}</h3>
+                    <p>${hit.content}</p>
+                    <a class="project-link" href="${hit.url}">Check it out</a>
+                    </div>
+                    </div>
+      `;
+                },
+            },
         }),
 
         instantsearch.widgets.refinementList({
