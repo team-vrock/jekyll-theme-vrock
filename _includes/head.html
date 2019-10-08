@@ -7,4 +7,18 @@
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <link rel="stylesheet" href="{{ "/assets/main.css" | prepend: site.baseurl }}">
+  <script src="{{ "/assets/js/advanced-progress-tracker.min.js" | prepend: site.baseurl }}"></script>
+  <script>
+      $('body').progressTracker({
+          horStops: false,
+          horTitles: true,
+          horMobileOnly: true,
+          verTracker: true,
+          verPosition: 'right',
+          trackAllHeadlines: true,
+          addFinalStop: true,
+          finalStopTitle: 'Credits, Questions & Feedback',
+          scrollSpeed: 1200
+      });
+  </script>
 </head>
