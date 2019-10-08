@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  {% include top.html %}
+  {% include navigation.html %}
+  
+  <body>
+      <section id="posts">
+        <!-- This loops through the paginated posts -->
+        {{content}}
+      </section>
+      {% include footer.html %}
+  </body>
