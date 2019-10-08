@@ -21,10 +21,6 @@
     });
 
     const hitTemplate = function (hit) {
-        let date = '';
-        if (hit.date) {
-            date = moment.unix(hit.date).format('MMM D, YYYY');
-        }
         let url = `{{ site.baseurl }}${hit.url}`;
         let image = `{{ site.baseurl }}${hit.image}`;
         const title = hit.title;
@@ -66,8 +62,8 @@
                     <img alt="mountains" src="${hit.image}" />
                     </div>
                     <div class="contents-right">
-                    <h3>${hit.title}</h3>
-                    <p>${hit.content}</p>
+                    <h3>${instantsearch.highlight({ attribute: 'title', highlightedTagName: 'mark', hit })}</h3>
+                    <p>${instantsearch.highlight({ attribute: 'content', highlightedTagName: 'mark', hit })}</p>
                     <a class="project-link" href="${hit.url}">Check it out</a>
                     </div>
                     </div>
