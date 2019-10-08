@@ -4,11 +4,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css">
 
 <script>
-    /* const search = instantsearch({
-      appId: '{{ site.algolia.application_id }}',
-      apiKey: '{{ site.algolia.search_only_api_key }}',
-      indexName: '{{ site.algolia.index_name }}'
-    }); */
 
     const searchClient = algoliasearch(
         '{{ site.algolia.application_id }}',
@@ -19,27 +14,6 @@
         indexName: '{{ site.algolia.index_name }}',
         searchClient,
     });
-
-    const hitTemplate = function (hit) {
-        let url = `{{ site.baseurl }}${hit.url}`;
-        let image = `{{ site.baseurl }}${hit.image}`;
-        const title = hit.title;
-        const content = hit.content;
-
-        return `
-  <div class="user-projects">
-    <div class="images-left">
-      <img alt="mountains" src="${image}" />
-    </div>
-    <div class="contents-right">
-      <h3>${title}</h3>
-      <p>${content}</p>
-      <a class="project-link" href="${url}">Check it out</a>
-    </div>
-  </div>
-  `;
-
-    }
 
     search.addWidgets([
         instantsearch.widgets.searchBox({
@@ -104,7 +78,7 @@
         margin-bottom: 15px;
     }
 
-    .ais-Highlight {
+    .ais-Highlight-highlighted {
         color: #111;
         background: #ff00ae;
         font-style: normal;
