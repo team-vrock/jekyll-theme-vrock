@@ -20,10 +20,14 @@ h1, h2, h3, h4 stong {
 }
 
 .invert h1, h2, h3, h4 stong {
-    margin-top: 0.5em;
-    padding-top: 0.5em;
+    margin-top: 0px;
+    padding-top: 0px;
     line-height: 1.125;
     color: #fff;
+}
+
+.invert h2 {
+    font-size: 2.625rem;
 }
 
 h5, h6 {
