@@ -1,7 +1,17 @@
-<h2 id="searchlist">SEARCH</h2>
-<form>
-<input type="text" id="search-input" placeholder="search posts.." class="searchbox rounded">
-</form>
-    <div class="search-projects">
-            <div id="results-container"></div>        
+<h2 id="searchlist">POSTS</h2>
+<div id="search-searchbar"></div>
+<div id="search-hits">
+    {% for post in site.posts offset:1 limit:5 %}
+    <div class="user-projects">
+        <div class="images-left">
+            <img alt="mountains" src="{{ post.image }}" />
+        </div>
+        <div class="contents-right">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt }}</p>
+            <a class="project-link" href="{{ post.url }}">Check it out</a>
+        </div>
+    </div>
+    {% endfor %}
 </div>
+<div id="refinement-list"></div>

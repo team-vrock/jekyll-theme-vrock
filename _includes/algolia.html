@@ -1,0 +1,175 @@
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css">
+
+<script>
+
+    const searchClient = algoliasearch(
+        '{{ site.algolia.application_id }}',
+        '{{ site.algolia.search_only_api_key }}'
+    );
+
+    const search = instantsearch({
+        indexName: '{{ site.algolia.index_name }}',
+        searchClient,
+    });
+
+    search.addWidgets([
+        instantsearch.widgets.searchBox({
+            container: '#search-searchbar',
+            placeholder: 'Search...',
+            autofocus: false,
+            searchAsYouType: true,
+            showReset: true,
+            showSubmit: false,
+            showLoadingIndicator: false,
+        }),
+
+        instantsearch.widgets.hits({
+            container: '#search-hits',
+            templates: {
+                item(hit) {
+                    return `
+                    <div class="user-projects">
+                    <div class="images-left">
+                    <img alt="mountains" src="${hit.image}" />
+                    </div>
+                    <div class="contents-right">
+                    <h3>${instantsearch.highlight({ attribute: 'title', highlightedTagName: 'mark', hit })}</h3>
+                    <p>${instantsearch.highlight({ attribute: 'content', highlightedTagName: 'mark', hit })}</p>
+                    <a class="project-link" href="${hit.url}">Check it out</a>
+                    </div>
+                    </div>
+      `;
+                },
+            },
+        }),
+
+        instantsearch.widgets.refinementList({
+            container: '#refinement-list',
+            attribute: 'tags',
+            templates: {
+                item(item) {
+                    return `
+                <a href="${item.url}" class="tags-link">
+                    ${item.label}<div class="tags-number">${item.count}</div>
+                </a>
+                `;
+                },
+            },
+        }),
+
+        instantsearch.widgets.poweredBy({
+            container: '#powered-by',
+            // Optional parameters
+            theme: 'dark',
+        })
+
+    ]);
+
+    search.start();
+
+</script>
+
+<style>
+    .ais-search-box {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .ais-Highlight-highlighted {
+        color: #111;
+        background: #ff00ae;
+        font-style: normal;
+    }
+
+    [class^="ais-"] {
+        font-size: inherit;
+    }
+
+    .ais-Hits {
+        font-size: inherit;
+        color: inherit;
+    }
+
+    .ais-Hits-item {
+        border: 0px;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .ais-RefinementList-list {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 25%;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 90%;
+        max-width: 960px;
+        margin: 0 auto;
+
+        @media only screen and (min-width: $cut) {
+            width: 80%;
+        }
+    }
+
+    .ais-RefinementList-item {
+        display: table-cell;
+        line-height: 22px;
+        text-align: center;
+        vertical-align: middle;
+        width: 150px;
+        margin: 10px 10px;
+        color: #1a222c;
+        background-color: transparent;
+        border-radius: 22px;
+        text-align: center;
+        outline: none;
+        text-decoration: none;
+        font-size: 9pt;
+        cursor: pointer;
+        transition: color 0.3s ease-out,
+            background-color 0.3s ease-out,
+            border-color 0.3s ease-out;
+    }
+
+    .ais-RefinementList-item--selected {
+        display: table-cell;
+        line-height: 22px;
+        text-align: center;
+        vertical-align: middle;
+        width: 150px;
+        margin: 10px 10px;
+        color: #fff;
+        background-color: #54516A;
+        border-color: #54516A;
+        border-radius: 22px;
+        text-align: center;
+        outline: none;
+        text-decoration: none;
+        font-size: 9pt;
+        cursor: pointer;
+        transition: color 0.3s ease-out,
+            background-color 0.3s ease-out,
+            border-color 0.3s ease-out;
+    }
+
+    .ais-SearchBox {
+        float: right;
+        width: 100%;
+    }
+
+    .ais-SearchBox-form {
+        width: 100%;
+    }
+
+    .powered-by {
+        vertical-align: middle;
+    }
+
+    .ais-PoweredBy {
+        float: none;
+        display: inline-block;
+    }
+</style>
