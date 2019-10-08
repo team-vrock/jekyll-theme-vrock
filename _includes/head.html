@@ -7,6 +7,7 @@
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <link rel="stylesheet" href="{{ "/assets/main.css" | prepend: site.baseurl }}">
+  <script src="{{ "/assets/js/jquery-3.3.1.min.js" | prepend: site.baseurl }}"></script>
   <script src="{{ "/assets/js/advanced-progress-tracker.min.js" | prepend: site.baseurl }}"></script>
   <script>
       $('body').progressTracker({
