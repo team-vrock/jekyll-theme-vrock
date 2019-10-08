@@ -30,7 +30,7 @@ xhr.send();
 };
 
 
-getJSON('https://api.github.com/repos/{{site.github_username}}/{{site.repository_name}}/issues/{{page.issueID}}/comments',
+getJSON('https://api.github.com/repos/{{site.github_username}}/{{site.repository_name}}/issues/{{page.issueid}}/comments',
   function(data){
     var comments = "";
     for (i = 0; i < data.length; i++) {
