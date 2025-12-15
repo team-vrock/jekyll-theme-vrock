@@ -1,4 +1,22 @@
-$main: #1a222c;
-$sec: #4B5664;
-$purple: #54516A;
+:root {
+    --main-color: #1a222c;
+    --sec-color: #4B5664;
+    --purple-color: #54516A;
+    --bg-color: #ffffff;
+    --text-color: #555555;
+    --heading-color: #333333;
+}
+
+[data-theme="dark"] {
+    --main-color: #e0e0e0;
+    --sec-color: #a0a0a0;
+    --purple-color: #9d96c1;
+    --bg-color: #121212;
+    --text-color: #cccccc;
+    --heading-color: #ffffff;
+}
+
+$main: var(--main-color);
+$sec: var(--sec-color);
+$purple: var(--purple-color);
 $cut: 600px;

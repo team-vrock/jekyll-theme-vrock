@@ -28,15 +28,16 @@
     }
 
     if(readCookie('cookie-notice-dismissed')=='true') {
-        {% if site.google-analytics %}
+        {% if site.google-analytics.id and site.google-analytics.id != "" %}
         {% include google-analytics.js %}
         {% endif %}
     } else {
-        $('#cookie-notice').show();
+        document.getElementById('cookie-notice').style.display = 'block';
     }
-    $('#cookie-notice-accept').click(function() {
+    document.getElementById('cookie-notice-accept').addEventListener('click', function() {
         createCookie('cookie-notice-dismissed','true',31);
-        $('#cookie-notice').hide();
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
     });
 
 </script>

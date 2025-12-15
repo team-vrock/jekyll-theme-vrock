@@ -1,6 +1,6 @@
 # Site settings
 title: VROCK
-description:
+description: "A Jekyll theme for developers"
 #baseurl: "/" # the subpath of your site, e.g. /blog
 #url: "localhost:4000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
@@ -13,6 +13,13 @@ user_title: by Tobias Geiser
 twitter_username: public_vrock
 github_username:  public-vrock
 repository_name: public-vrock.github.io
+
+# Algolia search settings
+algolia:
+  application_id: 'your_application_id'
+  index_name: 'your_index_name'
+  search_only_api_key: 'your_search_only_api_key'
+  powered_by: true
 
 # Google-analytics
 google-analytics:

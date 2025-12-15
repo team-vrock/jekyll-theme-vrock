@@ -1,11 +1,8 @@
-$(document).ready(function() {
-	$('.popup-youtube, .popup-vimeo, .popup-gmaps, .popup-image').magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 160,
-		preloader: false,
-
-		fixedContentPos: false
-	});
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = GLightbox({
+        selector: '.popup-youtube, .popup-vimeo, .popup-gmaps, .popup-image',
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+    });
 });
