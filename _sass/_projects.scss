@@ -60,6 +60,8 @@
 }
 
 .contents-right {
+  position: relative;
+  z-index: 1;
   @media only screen and (min-width: $cut) {
     float: none;
     margin: 0;
@@ -130,4 +132,31 @@
 .project-card,
 .post-card {
   display: block;
+}
+
+.project-card {
+  display: grid;
+  gap: 24px;
+}
+
+.project-image {
+  position: relative;
+  z-index: 1;
+}
+
+.project-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  box-shadow: 0 16px 36px var(--shadow-color);
+}
+
+@media only screen and (min-width: $cut) {
+  .project-card:has(.project-image) {
+    grid-template-columns: minmax(220px, 34%) 1fr;
+    align-items: center;
+  }
 }

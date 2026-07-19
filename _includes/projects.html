@@ -8,6 +8,11 @@
 {% if project_data and project_data.size > 0 %}
   {% for repo in project_data %}
     <article class="user-projects project-card">
+      {% if repo.image %}
+        <div class="project-image">
+          <img src="{{ repo.image | relative_url }}" alt="{{ repo.image_alt | default: repo.name }}">
+        </div>
+      {% endif %}
       <div class="contents-right">
         <p class="project-meta">{{ repo.language | default: 'Repository' }}</p>
         <h3>{{ repo.name }}</h3>

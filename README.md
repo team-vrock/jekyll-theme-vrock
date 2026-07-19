@@ -54,6 +54,8 @@ Expected project data shape:
   description: Corporate-clean Jekyll theme for technical teams.
   language: Ruby
   html_url: https://github.com/team-vrock/jekyll-theme-vrock
+  image: /assets/img/projects/jekyll-theme-vrock.png
+  image_alt: jekyll-theme-vrock preview
 ```
 
 ## Search
