@@ -9,11 +9,13 @@ The theme keeps the original full-screen hero visual identity and adds modernize
 ## Usage
 
 ```yml
-remote_theme: team-vrock/jekyll-theme-vrock@feat/refresh-modern
+remote_theme: team-vrock/jekyll-theme-vrock
 
 plugins:
   - jekyll-remote-theme
 ```
+
+Use a tag, commit SHA, or branch name without `/` when pinning a remote theme ref. `jekyll-remote-theme` does not accept slash characters in the `@ref` portion.
 
 ## Configuration
 
