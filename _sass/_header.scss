@@ -1,5 +1,5 @@
 
-#particles-js {
+.hero-background {
   display: flex;
   vertical-align: bottom;
   width: 100%;
@@ -14,7 +14,7 @@
   }
 }
 
-#particles-js::before {
+.hero-background::before {
   content: "";
   position: absolute;
   inset: 0;

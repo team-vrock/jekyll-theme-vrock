@@ -1,14 +1,10 @@
 # Site settings
 title: TEAM VROCK
 description: "A Jekyll theme for technical teams, company sites, and engineering blogs."
-#baseurl: "/" # the subpath of your site, e.g. /blog
-#url: "localhost:4000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
-
-
 
 # User settings
 username: TEAM VROCK
-user_description: "A corporate-clean Jekyll theme for teams that publish technical posts and showcase engineering work."
+user_description: "A modern Jekyll theme for teams that publish technical posts and showcase engineering work."
 user_title: Technical posts, projects, and engineering notes
 hero:
   logo: /assets/img/logo.png
@@ -70,7 +66,7 @@ google-analytics:
   id: ""
   cookie_name: cookie-notice-dismissed
 
-exclude: ['src', 'node_modules', 'vendor']
+exclude: ['src', 'node_modules', 'vendor', '.bundle', '.ruby-version', '*.gem']
 
 markdown: kramdown
 highlighter: rouge
@@ -79,10 +75,6 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-#plugins:
-#  - jekyll-minifier
-
-
 # Github settings
-repository: public-vrock/public-vrock.github.io
+repository: team-vrock/jekyll-theme-vrock
 github: [metadata]

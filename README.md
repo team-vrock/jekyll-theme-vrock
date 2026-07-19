@@ -1,10 +1,10 @@
-# VROCK Jekyll Theme
+# Jekyll Theme VROCK
 
 ![](./screen.png)
 
-VROCK is a corporate-clean Jekyll theme for technical teams that want to publish posts and showcase selected engineering work on GitHub Pages.
+VROCK is a modern Jekyll theme for technical teams that want to publish engineering posts and showcase selected GitHub projects.
 
-The theme keeps the original full-screen hero visual identity and adds modernized layouts, configurable navigation/social links, post search, pinned project cards, dark mode, and GA4 consent handling.
+It provides a responsive hero, configurable navigation and social links, pinned project cards, post search, dark mode, themed syntax highlighting, copy buttons for code blocks, locally bundled Font Awesome assets, and GA4 consent handling.
 
 ## Usage
 
@@ -24,6 +24,9 @@ title: TEAM VROCK
 username: TEAM VROCK
 user_title: Technical posts, projects, and engineering notes
 user_description: "TEAM VROCK publishes practical notes about cloud, DevOps, and engineering work."
+
+hero:
+  logo: /assets/img/logo.png
 
 primary_cta:
   label: Read posts
@@ -53,12 +56,16 @@ Expected project data shape:
 
 ```yml
 - name: jekyll-theme-vrock
-  description: Corporate-clean Jekyll theme for technical teams.
+  description: Modern Jekyll theme for technical teams.
   language: Ruby
   html_url: https://github.com/team-vrock/jekyll-theme-vrock
   image: /assets/img/projects/jekyll-theme-vrock.png
   image_alt: jekyll-theme-vrock preview
 ```
+
+## Code Blocks
+
+Fenced code blocks use Rouge syntax highlighting and automatically follow the active light or dark theme. Each highlighted block gets a copy button without additional configuration.
 
 ## Search
 
@@ -93,13 +100,6 @@ bundle exec jekyll serve
 bundle exec jekyll serve --drafts
 ```
 
-## Questions
-
 ## License
 
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme anyway you want.
-
-## Credits
-
-This theme was partially designed with the inspiration from these fine folks
-- [Nathan Randecker](https://github.com/nrandecker/particle)
+This theme is free and open source software distributed under the MIT License.
