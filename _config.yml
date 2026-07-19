@@ -1,5 +1,5 @@
 # Site settings
-title: VROCK
+title: TEAM VROCK
 description: "A Jekyll theme for technical teams, company sites, and engineering blogs."
 #baseurl: "/" # the subpath of your site, e.g. /blog
 #url: "localhost:4000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
@@ -7,7 +7,7 @@ description: "A Jekyll theme for technical teams, company sites, and engineering
 
 
 # User settings
-username: VROCK
+username: TEAM VROCK
 user_description: "A corporate-clean Jekyll theme for teams that publish technical posts and showcase engineering work."
 user_title: Technical posts, projects, and engineering notes
 hero:
