@@ -1,7 +1,8 @@
 <header id="top" class="hero-shell">
   <div id="particles-js">
     <div class="header">
-      <div class="logo" aria-hidden="true"></div>
+      {% assign hero_logo = site.hero.logo | default: '/assets/img/logo.png' %}
+      <img class="logo" src="{{ hero_logo | relative_url }}" alt="" aria-hidden="true">
       <p class="eyebrow">{{ site.title | default: site.username }}</p>
       <h1>
         <span class="site-title">{{ site.username }}</span>

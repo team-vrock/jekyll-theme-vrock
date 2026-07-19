@@ -8,17 +8,17 @@
     <div class="tech capability-card">
       <h3>{{ capability.title }}</h3>
       {% if capability.icon == 'agile' %}
-        <div class="icon-agile" aria-hidden="true"></div>
+        <i class="fas fa-agile capability-icon" aria-hidden="true"></i>
       {% elsif capability.icon == 'cloud' %}
-        <i class="fas fa-cloud" aria-hidden="true"></i>
+        <i class="fas fa-cloud capability-icon" aria-hidden="true"></i>
       {% elsif capability.icon == 'handshake' %}
-        <i class="far fa-handshake" aria-hidden="true"></i>
+        <i class="far fa-handshake capability-icon" aria-hidden="true"></i>
       {% elsif capability.icon == 'infinity' %}
-        <i class="fas fa-infinity" aria-hidden="true"></i>
+        <i class="fas fa-infinity capability-icon" aria-hidden="true"></i>
       {% elsif capability.icon == 'lightbulb' %}
-        <i class="far fa-lightbulb" aria-hidden="true"></i>
+        <i class="far fa-lightbulb capability-icon" aria-hidden="true"></i>
       {% else %}
-        <i class="fas fa-cube" aria-hidden="true"></i>
+        <i class="fas fa-cube capability-icon" aria-hidden="true"></i>
       {% endif %}
       <p>{{ capability.description }}</p>
     </div>

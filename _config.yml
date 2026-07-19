@@ -10,6 +10,8 @@ description: "A Jekyll theme for technical teams, company sites, and engineering
 username: VROCK
 user_description: "A corporate-clean Jekyll theme for teams that publish technical posts and showcase engineering work."
 user_title: Technical posts, projects, and engineering notes
+hero:
+  logo: /assets/img/logo.png
 primary_cta:
   label: Read posts
   url: "#searchlist"

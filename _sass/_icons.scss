@@ -1,15 +1,11 @@
-.icon-agile {
-  background-image: url(img/icon-agile.png);
-  background-repeat: no-repeat;
-  background-size: 60px 60px;
-  width:60px;
-  height:60px;
-  border:none;
-  padding:0px;
-  @media only screen and (min-width: $cut) {
-    flex-wrap: nowrap;
-    width: 75px;
-    height: 75px;
-    background-size: 75px 75px;
-  }
+.fa-agile:before {
+  content: "\e4bb";
+}
+
+.capability-icon {
+  display: inline-block;
+  margin: 8px 0 4px;
+  color: $purple;
+  font-size: 3rem;
+  line-height: 1;
 }
