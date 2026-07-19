@@ -8,6 +8,7 @@
   color: var(--code-text);
   margin: 1.5rem 0;
   overflow: auto;
+  position: relative;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 
   .highlighter-rouge & {
@@ -17,7 +18,7 @@
   pre {
     margin: 0;
     overflow-x: auto;
-    padding: 1rem 1.125rem;
+    padding: 1rem 5.5rem 1rem 1.125rem;
   }
 
   code {
@@ -86,6 +87,47 @@
   .vg    { color: var(--code-name) } // Name.Variable.Global
   .vi    { color: var(--code-name) } // Name.Variable.Instance
   .il    { color: var(--code-number) } // Literal.Number.Integer.Long
+}
+
+.copy-code-button {
+  appearance: none;
+  background: var(--card-color);
+  border: 1px solid var(--code-border);
+  border-radius: 999px;
+  color: var(--code-muted);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding: 0.45rem 0.7rem;
+  position: absolute;
+  right: 0.75rem;
+  text-transform: uppercase;
+  top: 0.75rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  z-index: 1;
+}
+
+.copy-code-button:hover,
+.copy-code-button:focus-visible {
+  background: var(--accent-blue-soft);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.copy-code-button.is-copied {
+  background: var(--accent-green-soft);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.copy-code-button.has-error {
+  background: var(--code-error-bg);
+  border-color: var(--code-error-text);
+  color: var(--code-error-text);
 }
 
 :not(pre) > code {
