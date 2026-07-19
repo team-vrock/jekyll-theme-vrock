@@ -1,7 +1,7 @@
 <nav class="floating-menu" aria-label="Quick navigation">
   <div class="header-icons">
-    <a aria-label="Home" href="{{ '/' | relative_url }}#top" data-scroll><i class="icon fa fa-chevron-up" aria-hidden="true"></i></a>
-    <a aria-label="Posts" href="{{ '/' | relative_url }}#searchlist"><i class="icon fa fa-search" aria-hidden="true"></i></a>
+    <a aria-label="Home" href="{{ '/' | relative_url }}#top" data-scroll><i class="icon fas fa-chevron-up" aria-hidden="true"></i></a>
+    <a aria-label="Posts" href="{{ '/' | relative_url }}#searchlist"><i class="icon fas fa-search" aria-hidden="true"></i></a>
     {% for item in site.social_links %}
       {% assign icon_class = 'fa-link' %}
       {% if item.icon == 'linkedin' %}{% assign icon_class = 'fab fa-linkedin' %}{% endif %}
