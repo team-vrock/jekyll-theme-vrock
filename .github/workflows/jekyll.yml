@@ -4,8 +4,9 @@ on:
   pull_request:
   push:
     branches:
-      - master
-      - feat/refresh-modern
+      - main
+    tags:
+      - 'v*'
 
 jobs:
   build:
