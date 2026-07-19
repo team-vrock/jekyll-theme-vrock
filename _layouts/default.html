@@ -17,7 +17,7 @@
         {{ content }}
       </main>
       {% include footer.html %}
-      {% if site.algolia.application_id and site.algolia.search_only_api_key and site.algolia.index_name %}
+      {% if jekyll.environment == 'production' and site.algolia.enabled != false and site.algolia.application_id and site.algolia.search_only_api_key and site.algolia.index_name %}
       {% include algolia.html %}
       {% endif %}
       {% include cookie-consent.html %}

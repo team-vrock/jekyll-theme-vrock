@@ -64,11 +64,14 @@ Algolia search is optional and targets posts only. Configure it when your index 
 
 ```yml
 algolia:
+  enabled: true
   application_id: "..."
   index_name: "..."
   search_only_api_key: "..."
   powered_by: true
 ```
+
+Algolia is loaded only when `JEKYLL_ENV=production`. Local development, including `bundle exec jekyll serve --drafts`, keeps the server-rendered `site.posts` list so unpublished drafts are visible during preview.
 
 ## Analytics
 
@@ -85,6 +88,7 @@ google-analytics:
 bundle install
 bundle exec jekyll build
 bundle exec jekyll serve
+bundle exec jekyll serve --drafts
 ```
 
 ## Questions

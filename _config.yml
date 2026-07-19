@@ -59,6 +59,7 @@ github_projects:
 
 # Algolia search settings
 algolia:
+  enabled: true
   application_id: 'your_application_id'
   index_name: 'your_index_name'
   search_only_api_key: 'your_search_only_api_key'
