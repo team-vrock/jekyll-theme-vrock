@@ -69,20 +69,20 @@ input[type=text] {
   padding: 14px 18px;
   color: var(--heading-color);
   background: var(--card-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--accent-cyan);
   border-radius: 999px;
   box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .vrock-search-input:focus {
-  border-color: $purple;
-  outline: 3px solid rgba(84, 81, 106, 0.18);
+  border-color: var(--accent-violet);
+  outline: 3px solid var(--accent-violet-soft);
 }
 
 .tags-link-selected {
   color: #fff;
-  background-color: $purple;
-  border-color: $purple;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+  border-color: transparent;
 }
 
 .ais-SearchBox-input {
@@ -106,7 +106,7 @@ input[type=text] {
 
 .ais-Highlight-highlighted {
   color: #111;
-  background: #e2d9ff;
+  background: linear-gradient(135deg, #b7f7ff, #e2d9ff);
   font-style: normal;
 }
 

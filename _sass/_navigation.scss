@@ -29,8 +29,8 @@
   .floating-menu a:hover,
   .floating-menu button:hover {
     color: var(--heading-color);
-    background: var(--surface-color);
-    border-color: $purple;
+    background: linear-gradient(135deg, var(--accent-cyan-soft), var(--accent-violet-soft)), var(--card-color);
+    border-color: var(--accent-cyan);
     transform: translateX(-2px);
   }
 

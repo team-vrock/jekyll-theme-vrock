@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: center;
   margin: 10px auto 8px;
-  color: $purple;
+  color: var(--card-accent, var(--accent-violet));
   font-size: 3rem;
   line-height: 1;
+  filter: drop-shadow(0 12px 22px var(--card-accent-soft, var(--accent-violet-soft)));
 }
