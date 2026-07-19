@@ -1,17 +1,70 @@
 .floating-menu {
-    padding: 5px;;
-    width: 80px;
+    padding: 6px;
+    width: 58px;
     z-index: 100;
     position: fixed;
-    bottom: 13%;
-    right: 0px;
+    bottom: 12%;
+    right: 8px;
     background-color: transparent;
   }
 
-  .floating-menu a, 
-  .floating-menu h3 {
-    font-size: 0.9em;
-    display: block;
-    margin: 0 0.5em;
-    color: black;
+  .floating-menu a,
+  .floating-menu button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    margin: 0;
+    color: var(--muted-color);
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 10px 24px var(--shadow-color);
+    transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .floating-menu a:hover,
+  .floating-menu button:hover {
+    color: var(--heading-color);
+    background: linear-gradient(135deg, var(--accent-cyan-soft), var(--accent-violet-soft)), var(--card-color);
+    border-color: var(--accent-cyan);
+    transform: translateX(-2px);
+  }
+
+  .floating-menu .icon {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    color: currentColor;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .theme-toggle {
+    cursor: pointer;
+  }
+
+  @media only screen and (min-width: $cut) {
+    .floating-menu {
+      width: 66px;
+      right: 12px;
+    }
+
+    .floating-menu a,
+    .floating-menu button {
+      width: 48px;
+      height: 48px;
+    }
+
+    .floating-menu .icon {
+      font-size: 21px;
+    }
   }

@@ -1,21 +1,61 @@
 # Site settings
-title: VROCK
-description: "A Jekyll theme for developers"
-#baseurl: "/" # the subpath of your site, e.g. /blog
-#url: "localhost:4000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
-
-
+title: TEAM VROCK
+description: "A Jekyll theme for technical teams, company sites, and engineering blogs."
 
 # User settings
-username: VROCK
-user_description: "Hi, folks and welcome to my blog. I'm a passionated senior system engineer who's always open for learning new things. So check out my work."
-user_title: by Tobias Geiser
-twitter_username: public_vrock
-github_username:  public-vrock
-repository_name: public-vrock.github.io
+username: TEAM VROCK
+user_description: "A modern Jekyll theme for teams that publish technical posts and showcase engineering work."
+user_title: Technical posts, projects, and engineering notes
+hero:
+  logo: /assets/img/logo.png
+primary_cta:
+  label: Read posts
+  url: "#searchlist"
+secondary_cta:
+  label: View projects
+  url: "#projects"
+
+navigation:
+  - label: About
+    url: "#about"
+  - label: Projects
+    url: "#projects"
+  - label: Posts
+    url: "#searchlist"
+
+social_links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/company/vrock"
+    icon: linkedin
+  - label: GitHub
+    url: "https://github.com/team-vrock"
+    icon: github
+
+capabilities:
+  - title: Cloud
+    icon: cloud
+    description: "Cloud platforms, architecture, and operational readiness."
+  - title: Transformation
+    icon: handshake
+    description: "Pragmatic modernization for teams, platforms, and delivery models."
+  - title: DevOps
+    icon: infinity
+    description: "Automation, CI/CD, platform engineering, and reliable delivery."
+  - title: Innovation
+    icon: lightbulb
+    description: "Experiments and technical patterns that move useful ideas forward."
+  - title: Agile
+    icon: agile
+    description: "Iterative delivery, feedback loops, and team enablement."
+
+github_projects:
+  organization: team-vrock
+  pinned_repositories:
+    - jekyll-theme-vrock
 
 # Algolia search settings
 algolia:
+  enabled: true
   application_id: 'your_application_id'
   index_name: 'your_index_name'
   search_only_api_key: 'your_search_only_api_key'
@@ -24,8 +64,9 @@ algolia:
 # Google-analytics
 google-analytics:
   id: ""
+  cookie_name: cookie-notice-dismissed
 
-exclude: ['src' , 'node_modules']
+exclude: ['src', 'node_modules', 'vendor', '.bundle', '.ruby-version', '*.gem']
 
 markdown: kramdown
 highlighter: rouge
@@ -34,10 +75,6 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-#plugins:
-#  - jekyll-minifier
-
-
 # Github settings
-repository: public-vrock/public-vrock.github.io
+repository: team-vrock/jekyll-theme-vrock
 github: [metadata]

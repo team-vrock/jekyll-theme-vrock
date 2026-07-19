@@ -1,4 +1,6 @@
-<div id="top">
-    <div class="logo-small"></div>
-    <h2>{{page.title}}</h2>
-</div>
+<header id="top" class="topbar">
+  <a href="{{ '/' | relative_url }}" class="topbar-link">
+    <span class="logo-small" aria-hidden="true"></span>
+    <span>{{ page.title | default: site.title }}</span>
+  </a>
+</header>

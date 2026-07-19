@@ -1,9 +1,16 @@
-<nav class="floating-menu">
-    <div class="header-icons">
-        <a aria-label="Home" href="/#" ><i class="icon fa fa-chevron-up" aria-hidden="true"></i></a>
-        <a aria-label="Search" href="/#searchlist"><i class="icon fa fa-search" aria-hidden="true"></i></a>
-        <a aria-label="Linkedin" target="_blank" href="https://www.linkedin.com/company/vrock"><i class="icon fab fa-linkedin" aria-hidden="true"></i></a>
-        <a aria-label="Github" target="_blank" href="https://github.com/public-vrock"><i class="icon fab fa-github" aria-hidden="true"></i></a>
-        <a aria-label="Docker" target="_blank" href="https://hub.docker.com/u/publicvrock/"><i class="icon fab fa-docker" aria-hidden="true"></i></a>
-      </div>
-  </nav>
+<nav class="floating-menu" aria-label="Quick navigation">
+  <div class="header-icons">
+    <a aria-label="Home" href="{{ '/' | relative_url }}#top" data-scroll><i class="icon fas fa-chevron-up" aria-hidden="true"></i></a>
+    <a aria-label="Posts" href="{{ '/' | relative_url }}#searchlist"><i class="icon fas fa-search" aria-hidden="true"></i></a>
+    {% for item in site.social_links %}
+      {% assign icon_class = 'fa-link' %}
+      {% if item.icon == 'linkedin' %}{% assign icon_class = 'fab fa-linkedin' %}{% endif %}
+      {% if item.icon == 'github' %}{% assign icon_class = 'fab fa-github' %}{% endif %}
+      {% if item.icon == 'docker' %}{% assign icon_class = 'fab fa-docker' %}{% endif %}
+      <a aria-label="{{ item.label }}" target="_blank" rel="noopener" href="{{ item.url }}"><i class="icon {{ icon_class }}" aria-hidden="true"></i></a>
+    {% endfor %}
+    <button id="dark-mode-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+      <i class="icon fas fa-moon" aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>

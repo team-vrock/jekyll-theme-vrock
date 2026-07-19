@@ -1,0 +1,28 @@
+name: Build Jekyll theme
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build
+        run: bundle exec jekyll build
+
+      - name: Build theme gem
+        run: gem build jekyll-theme-vrock.gemspec

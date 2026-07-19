@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (typeof SweetScroll === 'undefined') return;
     const scroller = new SweetScroll(
         {
             trigger: '[data-scroll]',       // Selector for trigger (must be a valid css selector)
@@ -22,4 +23,5 @@ document.addEventListener('DOMContentLoaded', () => {
             step: null,
           }
     );
+    void scroller;
   }, false);

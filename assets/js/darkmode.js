@@ -1,41 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.createElement('button');
-    toggleButton.innerText = '🌓';
-    toggleButton.style.position = 'fixed';
-    toggleButton.style.bottom = '20px';
-    toggleButton.style.right = '20px';
-    toggleButton.style.zIndex = '1000';
-    toggleButton.style.padding = '10px';
-    toggleButton.style.borderRadius = '50%';
-    toggleButton.style.border = 'none';
-    toggleButton.style.backgroundColor = 'var(--main-color)';
-    toggleButton.style.color = 'var(--bg-color)';
-    toggleButton.style.cursor = 'pointer';
-    toggleButton.style.fontSize = '20px';
-    toggleButton.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
-    toggleButton.id = 'dark-mode-toggle';
-    
-    document.body.appendChild(toggleButton);
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if (!toggleButton) return;
 
     const currentTheme = localStorage.getItem('theme');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
+    const setTheme = (theme) => {
+        const icon = toggleButton.querySelector('i');
+        document.documentElement.setAttribute('data-theme', theme);
+        toggleButton.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        toggleButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        if (icon) {
+            icon.classList.toggle('fa-sun', theme === 'dark');
+            icon.classList.toggle('fa-moon', theme !== 'dark');
+        }
+    };
+
     if (currentTheme == 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        setTheme('dark');
     } else if (currentTheme == 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
+        setTheme('light');
     } else if (prefersDarkScheme.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        setTheme('dark');
+    } else {
+        setTheme('light');
     }
 
     toggleButton.addEventListener('click', () => {
-        let theme = document.documentElement.getAttribute('data-theme');
-        if (theme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        }
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        localStorage.setItem('theme', next);
     });
 });

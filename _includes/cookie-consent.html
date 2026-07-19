@@ -1,17 +1,18 @@
-<div id="cookie-notice">
-    <p>We would like to use third party cookies and scripts to improve the functionality of this website.</p>
-    <p><a id="cookie-notice-accept" class="btn btn-primary btn-sm">Approve</a>
-    <a href="/privacy" class="btn btn-primary btn-sm">More info</a></p>
+{% if site.google-analytics.id and site.google-analytics.id != "" %}
+<div id="cookie-notice" role="dialog" aria-live="polite" aria-label="Analytics cookie consent">
+    <p>We use Google Analytics only after your approval to understand which posts are useful.</p>
+    <p><button id="cookie-notice-accept" class="btn btn-primary btn-sm" type="button">Approve analytics</button>
+    <a href="{{ '/privacy' | relative_url }}" class="btn btn-primary btn-sm">More info</a></p>
 </div>
 <script>
-    function createCookie(name,value,days) {
+    function createCookie(name, value, days) {
         var expires = "";
         if (days) {
             var date = new Date();
             date.setTime(date.getTime() + (days*24*60*60*1000));
             expires = "; expires=" + date.toUTCString();
         }
-        document.cookie = name + "=" + value + expires + "; path=/";
+        document.cookie = name + "=" + value + expires + "; path=/; SameSite=Lax";
     }
     function readCookie(name) {
         var nameEQ = name + "=";
@@ -27,17 +28,18 @@
         createCookie(name,"",-1);
     }
 
-    if(readCookie('cookie-notice-dismissed')=='true') {
-        {% if site.google-analytics.id and site.google-analytics.id != "" %}
+    var consentCookie = '{{ site.google-analytics.cookie_name | default: "cookie-notice-dismissed" }}';
+    if(readCookie(consentCookie) == 'true') {
         {% include google-analytics.js %}
-        {% endif %}
     } else {
         document.getElementById('cookie-notice').style.display = 'block';
     }
-    document.getElementById('cookie-notice-accept').addEventListener('click', function() {
-        createCookie('cookie-notice-dismissed','true',31);
+    document.getElementById('cookie-notice-accept').addEventListener('click', function(e) {
+        e.preventDefault();
+        createCookie(consentCookie,'true',180);
         document.getElementById('cookie-notice').style.display = 'none';
         location.reload();
     });
 
 </script>
+{% endif %}

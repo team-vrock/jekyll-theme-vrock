@@ -1,15 +1,10 @@
-.icon-agile {
-  background-image: url(/assets/img/icon-agile.png);
-  background-repeat: no-repeat;
-  background-size: 60px 60px;
-  width:60px;
-  height:60px;
-  border:none;
-  padding:0px;
-  @media only screen and (min-width: $cut) {
-    flex-wrap: nowrap;
-    width: 75px;
-    height: 75px;
-    background-size: 75px 75px;
-  }
+.capability-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto 8px;
+  color: var(--card-accent, var(--accent-violet));
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 12px 22px var(--card-accent-soft, var(--accent-violet-soft)));
 }
