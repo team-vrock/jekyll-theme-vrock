@@ -6,9 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
     const setTheme = (theme) => {
+        const icon = toggleButton.querySelector('i');
         document.documentElement.setAttribute('data-theme', theme);
         toggleButton.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-        toggleButton.textContent = theme === 'dark' ? 'Light' : 'Dark';
+        toggleButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        if (icon) {
+            icon.classList.toggle('fa-sun', theme === 'dark');
+            icon.classList.toggle('fa-moon', theme !== 'dark');
+        }
     };
 
     if (currentTheme == 'dark') {
