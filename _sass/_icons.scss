@@ -1,6 +1,8 @@
 .capability-icon {
-  display: inline-block;
-  margin: 8px 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto 8px;
   color: $purple;
   font-size: 3rem;
   line-height: 1;
