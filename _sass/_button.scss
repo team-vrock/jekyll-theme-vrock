@@ -1,9 +1,10 @@
-.btn-primary {background: #d9230f!important; border: 1px solid #d9230f!important; font-weight: bold; color: rgba(255,255,255,0.75)!important;}
-.btn-primary:hover {color: rgba(255,255,255,0.9)!important;}
+.btn-primary {background: #54516A!important; border: 1px solid #54516A!important; font-weight: bold; color: rgba(255,255,255,0.9)!important;}
+.btn-primary:hover {color: #fff!important;}
 .btn {
     padding: 5px 10px!important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
+    cursor: pointer;
 }
 .btn-sm, .btn-group-sm>.btn {
     padding: 5px 10px;

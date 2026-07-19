@@ -1,15 +1,21 @@
-<div id="particles-js">
-  <div class="header">
-    <div class="logo"></div>
+<header id="top" class="hero-shell">
+  <div id="particles-js">
+    <div class="header">
+      <div class="logo" aria-hidden="true"></div>
+      <p class="eyebrow">{{ site.title | default: site.username }}</p>
       <h1>
-        <span class="site-title">{{site.username}}</span>
-        <span class="site-description">{{site.user_title}}</span>
+        <span class="site-title">{{ site.username }}</span>
+        <span class="site-description">{{ site.user_title }}</span>
       </h1>
-      <div class="header-links">
-          <a class="link" href="#about" data-scroll>ABOUT</a>
-        <a class="link" href="#news" data-scroll>FEATURED</a>
-        <a class="link" href="#searchlist" data-scroll>POSTS</a>
+      <div class="header-links" aria-label="Primary links">
+        {% if site.primary_cta.label and site.primary_cta.url %}
+          <a class="link link-primary" href="{{ site.primary_cta.url }}" data-scroll>{{ site.primary_cta.label }}</a>
+        {% endif %}
+        {% if site.secondary_cta.label and site.secondary_cta.url %}
+          <a class="link" href="{{ site.secondary_cta.url }}" data-scroll>{{ site.secondary_cta.label }}</a>
+        {% endif %}
       </div>
+    </div>
+    <a class="down" href="#about" data-scroll aria-label="Skip to content"><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
   </div>
-  <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
-</div>
+</header>

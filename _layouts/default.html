@@ -4,17 +4,22 @@
   <body>
       {% include header.html %}
       {% include navigation.html %}
-      <section id="about">
+      <main id="content">
+      <section id="about" class="site-section" aria-labelledby="about-title">
         {% include about.html %}
       </section>
-      <section id="projects">
+      <section id="projects" class="site-section" aria-labelledby="projects-title">
         {% include projects.html %}
       </section>
-      <section id="search">
+      <section id="search" class="site-section" aria-labelledby="searchlist">
           {% include search.html %}
       </section>
         {{ content }}
+      </main>
       {% include footer.html %}
+      {% if site.algolia.application_id and site.algolia.search_only_api_key and site.algolia.index_name %}
       {% include algolia.html %}
+      {% endif %}
       {% include cookie-consent.html %}
   </body>
+</html>

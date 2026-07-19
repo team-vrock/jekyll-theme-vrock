@@ -1,10 +1,18 @@
-#top {
-  display: flex;
-  justify-content: flex-start;
+.topbar {
   width: 100%;
   min-height: 120px;
-  margin: 0 auto;
-  background-color: black;
+  background-color: #1a222c;
+}
+
+.topbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 .logo-small {
@@ -26,7 +34,7 @@
   width: 100%;
   min-height: 120px;
   margin: 0 auto;
-  background-color: black;
+  background-color: #1a222c;
 
   a {
     text-decoration: none;

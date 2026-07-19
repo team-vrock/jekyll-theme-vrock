@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const lightbox = GLightbox({
+    if (typeof GLightbox === 'undefined') return;
+    GLightbox({
         selector: '.popup-youtube, .popup-vimeo, .popup-gmaps, .popup-image',
         touchNavigation: true,
         loop: true,

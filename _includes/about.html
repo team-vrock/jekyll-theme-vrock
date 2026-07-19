@@ -1,31 +1,26 @@
 <div class="user-details">
-  <h1> ABOUT </h1>
-  <p> {{site.user_description}} </p>
+  <p class="section-kicker">About</p>
+  <h2>Engineering work, written clearly.</h2>
+  <p>{{ site.user_description }}</p>
 </div>
 <div class="user">
-    <div class="tech">
-      <h2>Cloud</h2>
-      <i class="fas fa-cloud"></i>
-      <p></p>
+  {% for capability in site.capabilities %}
+    <div class="tech capability-card">
+      <h3>{{ capability.title }}</h3>
+      {% if capability.icon == 'agile' %}
+        <div class="icon-agile" aria-hidden="true"></div>
+      {% elsif capability.icon == 'cloud' %}
+        <i class="fas fa-cloud" aria-hidden="true"></i>
+      {% elsif capability.icon == 'handshake' %}
+        <i class="far fa-handshake" aria-hidden="true"></i>
+      {% elsif capability.icon == 'infinity' %}
+        <i class="fas fa-infinity" aria-hidden="true"></i>
+      {% elsif capability.icon == 'lightbulb' %}
+        <i class="far fa-lightbulb" aria-hidden="true"></i>
+      {% else %}
+        <i class="fas fa-cube" aria-hidden="true"></i>
+      {% endif %}
+      <p>{{ capability.description }}</p>
     </div>
-    <div class="tech">
-      <h2>Transformation</h2>
-      <i class="far fa-handshake"></i>
-      <p></p>
-    </div>   
-    <div class="tech">
-      <h2>DevOps</h2>
-      <i class="fas fa-infinity"></i>
-      <p></p>
-    </div>
-    <div class="tech">
-      <h2>Innovation</h2>
-      <i class="far fa-lightbulb"></i>
-      <p></p>
-    </div>
-    <div class="tech">
-      <h2>Agile</h2>
-      <div class="icon-agile"></div>
-      <p></p>
-    </div>
+  {% endfor %}
 </div>

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 90%;
-  max-width: 960px;
+  max-width: 1120px;
   margin: 0 auto;
   @media only screen and (min-width: $cut) {
     width: 80%;
@@ -56,6 +56,86 @@ input[type=text] {
   width: 100%;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
+}
+
+.ais-SearchBox-form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.vrock-search-input {
+  width: 100%;
+  padding: 14px 18px;
+  color: var(--heading-color);
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.vrock-search-input:focus {
+  border-color: $purple;
+  outline: 3px solid rgba(84, 81, 106, 0.18);
+}
+
+.tags-link-selected {
+  color: #fff;
+  background-color: $purple;
+  border-color: $purple;
+}
+
+.ais-SearchBox-input {
+  width: 100%;
+  padding: 14px 18px;
+  color: var(--heading-color);
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.ais-SearchBox-submit,
+.ais-SearchBox-reset {
+  padding: 0 14px;
+  color: var(--heading-color);
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+}
+
+.ais-Highlight-highlighted {
+  color: #111;
+  background: #e2d9ff;
+  font-style: normal;
+}
+
+.ais-Hits-list,
+.ais-RefinementList-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ais-Hits-item {
+  margin: 0;
+}
+
+.ais-RefinementList-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px auto 0;
+}
+
+.ais-RefinementList-checkbox {
+  margin-right: 6px;
+}
+
+.ais-PoweredBy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* When the input field gets focus, change its width to 100% */

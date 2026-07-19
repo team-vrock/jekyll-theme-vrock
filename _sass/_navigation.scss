@@ -1,17 +1,35 @@
 .floating-menu {
     padding: 5px;;
-    width: 80px;
+    width: 64px;
     z-index: 100;
     position: fixed;
-    bottom: 13%;
-    right: 0px;
+    bottom: 12%;
+    right: 8px;
     background-color: transparent;
   }
 
-  .floating-menu a, 
+  .floating-menu a,
+  .floating-menu button,
   .floating-menu h3 {
     font-size: 0.9em;
     display: block;
     margin: 0 0.5em;
-    color: black;
+    color: var(--heading-color);
+  }
+
+  .theme-toggle {
+    min-width: 48px;
+    min-height: 37px;
+    margin: 5px auto;
+    color: var(--muted-color);
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    color: var(--heading-color);
+    border-color: $purple;
   }

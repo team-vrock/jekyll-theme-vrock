@@ -1,13 +1,35 @@
-<h2 id="news" style="padding-top: 120px">FEATURED</h2>
-{% for post in site.categories.microsite limit:2%}
-<div class="user-projects">
-  <div class="images-left">
-    <img alt="mountains" src="{{ post.image }}" />
-  </div>
-  <div class="contents-right">
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.excerpt }}</p>
-    <a class="project-link" href="{{ post.url }}">Check it out</a>
-  </div>
+<div class="section-heading">
+  <p class="section-kicker">Projects</p>
+  <h2 id="projects-title">Pinned GitHub work</h2>
+  <p>Selected repositories from {{ site.github_projects.organization | default: site.github.organization | default: site.github_username }}.</p>
 </div>
-{% endfor %}
+
+{% assign project_data = site.data.github_projects %}
+{% if project_data and project_data.size > 0 %}
+  {% for repo in project_data %}
+    <article class="user-projects project-card">
+      <div class="contents-right">
+        <p class="project-meta">{{ repo.language | default: 'Repository' }}</p>
+        <h3>{{ repo.name }}</h3>
+        <p>{{ repo.description | default: 'Pinned GitHub repository.' }}</p>
+        <a class="project-link" href="{{ repo.html_url }}">View project</a>
+      </div>
+    </article>
+  {% endfor %}
+{% elsif site.github_projects.pinned_repositories %}
+  {% for repo_name in site.github_projects.pinned_repositories %}
+    {% assign organization = site.github_projects.organization | default: site.github.organization | default: site.github_username %}
+    <article class="user-projects project-card">
+      <div class="contents-right">
+        <p class="project-meta">Pinned repository</p>
+        <h3>{{ repo_name }}</h3>
+        <p>Project from {{ organization }}.</p>
+        <a class="project-link" href="https://github.com/{{ organization }}/{{ repo_name }}">View project</a>
+      </div>
+    </article>
+  {% endfor %}
+{% else %}
+  <div class="empty-state">
+    <p>No pinned projects are configured yet.</p>
+  </div>
+{% endif %}

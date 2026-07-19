@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include head.html %}
-  {% include navigation.html %}
-  
   <body>
-      <section id="posts">
-      <h2>{{page.title}}</h2>
-      <h5>Last Reviewed: {{page.date}}<br><br>Author: {{page.author}}</h5>
-        <!-- This loops through the paginated posts -->
-        {{content}}
-      </section>
+      {% include navigation.html %}
+      <main id="content">
+        <article id="posts" class="post-layout">
+          <header class="post-header">
+            <p class="section-kicker">Reference</p>
+            <h1>{{ page.title }}</h1>
+            <p class="post-meta">{% if page.date %}Last reviewed: {{ page.date | date: "%B %-d, %Y" }}{% endif %}{% if page.author %} - Author: {{ page.author }}{% endif %}</p>
+          </header>
+          {{ content }}
+        </article>
+      </main>
       {% include footer.html %}
+      {% include cookie-consent.html %}
   </body>
+</html>
