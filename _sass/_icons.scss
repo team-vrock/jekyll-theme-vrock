@@ -1,4 +1,17 @@
-.fa-agile:before {
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("fonts/fa6-solid-900.woff2") format("woff2");
+}
+
+.fa-arrows-spin {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.fa-arrows-spin:before {
   content: "\e4bb";
 }
 
