@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.back-to-top').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (window.location.pathname === '/' || window.location.pathname === '') {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+
     if (typeof SweetScroll === 'undefined') return;
     const scroller = new SweetScroll(
         {
