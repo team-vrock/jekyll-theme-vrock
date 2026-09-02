@@ -1,6 +1,8 @@
 <nav class="floating-menu" aria-label="Quick navigation">
   <div class="header-icons">
-    <a aria-label="Home" href="{{ '/' | relative_url }}#top" data-scroll><i class="icon fas fa-chevron-up" aria-hidden="true"></i></a>
+    <a aria-label="Home" href="{{ '/' | relative_url }}#top" data-scroll>
+      <img class="icon home-logo" src="{{ '/assets/img/logo.png' | relative_url }}" alt="" aria-hidden="true">
+    </a>
     <a aria-label="Posts" href="{{ '/' | relative_url }}#searchlist"><i class="icon fas fa-search" aria-hidden="true"></i></a>
     {% for item in site.social_links %}
       {% assign icon_class = 'fa-link' %}

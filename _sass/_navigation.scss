@@ -48,6 +48,12 @@
     line-height: 1;
   }
 
+  .floating-menu .home-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
   .theme-toggle {
     cursor: pointer;
   }
