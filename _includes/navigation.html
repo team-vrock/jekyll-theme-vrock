@@ -12,7 +12,7 @@
       {% if item.icon == 'linkedin' %}{% assign icon_class = 'fab fa-linkedin' %}{% endif %}
       {% if item.icon == 'github' %}{% assign icon_class = 'fab fa-github' %}{% endif %}
       {% if item.icon == 'docker' %}{% assign icon_class = 'fab fa-docker' %}{% endif %}
-      <a aria-label="{{ item.label }}" target="_blank" rel="noopener" href="{{ item.url }}"><i class="icon {{ icon_class }}" aria-hidden="true"></i></a>
+      <a aria-label="{{ item.label }}" target="_blank" rel="noopener noreferrer" href="{{ item.url }}"><i class="icon {{ icon_class }}" aria-hidden="true"></i></a>
     {% endfor %}
     <button id="dark-mode-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
       <i class="icon fas fa-moon" aria-hidden="true"></i>

@@ -18,10 +18,12 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: '3.3'
           bundler-cache: true
 
       - name: Build
+        env:
+          JEKYLL_ENV: production
         run: bundle exec jekyll build
 
       - name: Build theme gem
