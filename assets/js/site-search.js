@@ -1,3 +1,5 @@
+---
+---
 document.addEventListener('DOMContentLoaded', async () => {
     const searchBox = document.getElementById('search-searchbar');
     const results = document.getElementById('search-hits');
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let posts;
     try {
-        const response = await fetch('/search.json');
+        const response = await fetch('{{ "/search.json" | relative_url }}');
         if (!response.ok) throw new Error('Search index unavailable');
         posts = await response.json();
     } catch (error) {
@@ -53,6 +55,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             .join(' ').toLowerCase().includes(query));
         results.innerHTML = matches.length ? matches.map(renderPost).join('') : '<div class="empty-state"><p>No posts found.</p></div>';
     });
+
+    const postsLink = document.querySelector('.floating-menu a[aria-label="Posts"]');
+    if (postsLink) {
+        postsLink.addEventListener('click', () => {
+            if (window.location.pathname === '{{ "/" | relative_url }}') {
+                window.setTimeout(() => input.focus(), 250);
+            }
+        });
+    }
 
     if (window.location.hash === '#searchlist' || new URLSearchParams(window.location.search).has('search')) {
         window.setTimeout(() => input.focus(), 250);
