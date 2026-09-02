@@ -60,6 +60,11 @@
     object-fit: contain;
   }
 
+  :root:not([data-theme="dark"]) .floating-menu .home-logo {
+    filter: invert(1) hue-rotate(180deg) brightness(0.2);
+    transition: filter 0.25s ease;
+  }
+
 
   .theme-toggle {
     cursor: pointer;

@@ -170,6 +170,11 @@
   white-space: nowrap;
 }
 
+:root:not([data-theme="dark"]) .post-card .images-left img[src*="logo.png"] {
+  filter: invert(1) hue-rotate(180deg) brightness(0.2);
+  transition: filter 0.25s ease;
+}
+
 .post-date-placeholder {
   visibility: hidden;
 }
@@ -250,8 +255,7 @@
   }
 }
 
-.project-card,
-.post-card {
+.project-card {
   display: block;
 }
 
