@@ -34,6 +34,12 @@
     transform: translateX(-2px);
   }
 
+  .floating-menu a:focus-visible,
+  .floating-menu button:focus-visible {
+    outline: 3px solid var(--accent-cyan);
+    outline-offset: 3px;
+  }
+
   .floating-menu .icon {
     width: auto;
     height: auto;
@@ -53,6 +59,7 @@
     height: 24px;
     object-fit: contain;
   }
+
 
   .theme-toggle {
     cursor: pointer;

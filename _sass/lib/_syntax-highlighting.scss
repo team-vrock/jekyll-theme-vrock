@@ -17,8 +17,10 @@
 
   pre {
     margin: 0;
-    overflow-x: auto;
+    overflow-x: visible;
+    overflow-wrap: anywhere;
     padding: 1rem 5.5rem 1rem 1.125rem;
+    white-space: pre-wrap;
   }
 
   code {
@@ -26,6 +28,7 @@
     border: 0;
     color: inherit;
     padding: 0;
+    white-space: inherit;
   }
 
   .c     { color: var(--code-comment); font-style: italic } // Comment
@@ -96,6 +99,8 @@
   border-radius: 999px;
   color: var(--code-muted);
   cursor: pointer;
+  min-width: 5.5rem;
+  text-align: center;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -105,7 +110,7 @@
   right: 0.75rem;
   text-transform: uppercase;
   top: 0.75rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.18s ease;
   z-index: 1;
 }
 
@@ -115,11 +120,15 @@
   border-color: var(--accent-blue);
   color: var(--accent-blue);
   outline: none;
-  transform: translateY(-1px);
+  transform: none;
+}
+
+.copy-code-button:active {
+  transform: scale(0.94);
 }
 
 .copy-code-button.is-copied {
-  background: var(--accent-green-soft);
+  background: var(--code-bg);
   border-color: var(--accent-green);
   color: var(--accent-green);
 }
@@ -128,6 +137,15 @@
   background: var(--code-error-bg);
   border-color: var(--code-error-text);
   color: var(--code-error-text);
+}
+
+.copy-code-button.is-copied,
+.copy-code-button.has-error {
+  background: var(--code-bg);
+  background-image: none;
+  box-shadow: none;
+  opacity: 1;
+  transform: none;
 }
 
 :not(pre) > code {
