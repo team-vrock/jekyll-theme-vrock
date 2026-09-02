@@ -104,11 +104,11 @@
 }
 
 .images-left .project-link {
-  display: inline-flex;
-  width: auto;
+  display: block;
+  width: 118px;
+  clear: both;
   margin: 14px auto 0;
-  border-radius: 999px;
-  white-space: nowrap;
+  border-radius: 22px;
 }
 
 .project-link {
