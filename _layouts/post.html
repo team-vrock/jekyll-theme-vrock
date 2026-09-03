@@ -6,11 +6,19 @@
 
   <main id="content">
   <article id="posts" class="post-layout">
+    {% if page.header %}
+    <header class="post-header post-header--banner" style="background-image: url('{{ page.header | prepend: site.baseurl }}');">
+      <p class="section-kicker">Post</p>
+      <h1>{{ page.title }}</h1>
+      <p class="post-meta">{% if page.date %}Last reviewed: {{ page.date | date: "%B %-d, %Y" }}{% endif %}{% if page.author %} - Author: {{ page.author }}{% endif %}</p>
+    </header>
+    {% else %}
     <header class="post-header">
       <p class="section-kicker">Post</p>
       <h1>{{ page.title }}</h1>
       <p class="post-meta">{% if page.date %}Last reviewed: {{ page.date | date: "%B %-d, %Y" }}{% endif %}{% if page.author %} - Author: {{ page.author }}{% endif %}</p>
     </header>
+    {% endif %}
 
     {{ content }}
     {% include comments.html %}
