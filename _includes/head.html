@@ -9,6 +9,30 @@
       document.documentElement.setAttribute('data-theme', theme || (prefersDark ? 'dark' : 'light'));
     })();
   </script>
+  {% if site.google-analytics.id and site.google-analytics.id != "" %}
+  {% assign analytics_cookie_name = site.google-analytics.cookie_name | default: "cookie-notice-dismissed" %}
+  <script data-cfasync="false">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    (function() {
+      var consentCookie = {{ analytics_cookie_name | jsonify }};
+      var hasAnalyticsConsent = document.cookie.split(';').some(function(cookie) {
+        return cookie.trim() === consentCookie + '=true';
+      });
+
+      gtag('consent', 'default', {
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      gtag('js', new Date());
+      gtag('config', {{ site.google-analytics.id | jsonify }});
+    })();
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-analytics.id }}" data-cfasync="false"></script>
+  {% endif %}
   {% assign page_title = page.title | default: site.title %}
   {% assign page_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 %}
 

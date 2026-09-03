@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-vrock"
-  spec.version       = "1.1.1"
+  spec.version       = "1.2.0"
   spec.authors       = ["Tobias Geiser"]
   spec.email         = ["tobias.geiser@vrock.ch"]
 

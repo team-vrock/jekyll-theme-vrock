@@ -4,7 +4,7 @@
 
 VROCK is a modern Jekyll theme for technical teams that want to publish engineering posts and showcase selected GitHub projects.
 
-It provides a responsive hero, configurable navigation and social links, pinned project cards, post search, dark mode, themed syntax highlighting, copy buttons for code blocks, locally bundled Font Awesome assets, and GA4 consent handling.
+It provides a responsive hero, configurable navigation and social links, pinned project cards, post search, dark mode, themed syntax highlighting, copy buttons for code blocks, locally bundled Font Awesome assets, and GA4 Consent Mode v2 handling.
 
 ## Usage
 
@@ -84,7 +84,7 @@ Algolia is loaded only when `JEKYLL_ENV=production`. Local development, includin
 
 ## Analytics
 
-GA4 loads only after cookie consent:
+GA4 uses Google Consent Mode v2. The Google tag loads on every page with `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization` denied by default. This allows limited cookieless measurement before consent without writing analytics cookies. When a visitor approves analytics, only `analytics_storage` changes to `granted` and the choice is stored in the configured consent cookie:
 
 ```yml
 google-analytics:

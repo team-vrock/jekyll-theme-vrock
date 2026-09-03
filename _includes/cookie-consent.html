@@ -1,10 +1,11 @@
 {% if site.google-analytics.id and site.google-analytics.id != "" %}
+{% assign analytics_cookie_name = site.google-analytics.cookie_name | default: "cookie-notice-dismissed" %}
 <div id="cookie-notice" role="dialog" aria-live="polite" aria-label="Analytics cookie consent">
-    <p>We use Google Analytics only after your approval to understand which posts are useful.</p>
+    <p>We use Google Analytics to understand which posts are useful. Before approval, only limited cookieless measurement signals are sent.</p>
     <p><button id="cookie-notice-accept" class="btn btn-primary btn-sm" type="button">Approve analytics</button>
     <a href="{{ '/privacy' | relative_url }}" class="btn btn-primary btn-sm">More info</a></p>
 </div>
-<script>
+<script data-cfasync="false">
     function createCookie(name, value, days) {
         var expires = "";
         if (days) {
@@ -24,21 +25,21 @@
         }
         return null;
     }
-    function eraseCookie(name) {
-        createCookie(name,"",-1);
-    }
-
-    var consentCookie = '{{ site.google-analytics.cookie_name | default: "cookie-notice-dismissed" }}';
-    if(readCookie(consentCookie) == 'true') {
-        {% include google-analytics.js %}
-    } else {
-        document.getElementById('cookie-notice').style.display = 'block';
+    var consentCookie = {{ analytics_cookie_name | jsonify }};
+    var cookieNotice = document.getElementById('cookie-notice');
+    if(readCookie(consentCookie) != 'true') {
+        cookieNotice.style.display = 'block';
     }
     document.getElementById('cookie-notice-accept').addEventListener('click', function(e) {
         e.preventDefault();
         createCookie(consentCookie,'true',180);
-        document.getElementById('cookie-notice').style.display = 'none';
-        location.reload();
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+        cookieNotice.style.display = 'none';
     });
 
 </script>
