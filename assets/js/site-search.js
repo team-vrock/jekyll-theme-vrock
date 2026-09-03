@@ -5,7 +5,40 @@ document.addEventListener('DOMContentLoaded', async () => {
     const results = document.getElementById('search-hits');
     if (!searchBox || !results) return;
 
-    const originalResults = results.innerHTML;
+    const PAGE_SIZE = 5;
+    const loadMoreButton = document.getElementById('load-more-posts');
+    const loadMoreWrap = loadMoreButton ? loadMoreButton.closest('.load-more-wrap') : null;
+    let cards = Array.from(results.querySelectorAll('article.post-card'));
+    let visibleCount = Math.min(PAGE_SIZE, cards.length);
+    let originalResults = results.innerHTML;
+
+    const syncLoadMore = () => {
+        cards.forEach((card, index) => card.toggleAttribute('hidden', index >= visibleCount));
+        if (loadMoreWrap) {
+            loadMoreWrap.toggleAttribute('hidden', visibleCount >= cards.length);
+        }
+    };
+
+    const focusFirstNew = (card) => {
+        if (!card) return;
+        card.setAttribute('tabindex', '-1');
+        card.focus({ preventScroll: true });
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    syncLoadMore();
+    originalResults = results.innerHTML;
+
+    if (loadMoreButton) {
+        loadMoreButton.addEventListener('click', () => {
+            const firstNew = cards[visibleCount];
+            visibleCount = Math.min(visibleCount + PAGE_SIZE, cards.length);
+            syncLoadMore();
+            originalResults = results.innerHTML;
+            focusFirstNew(firstNew);
+        });
+    }
+
     const input = document.createElement('input');
     input.type = 'search';
     input.className = 'vrock-search-input';
@@ -49,7 +82,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const query = input.value.trim().toLowerCase();
         if (!query) {
             results.innerHTML = originalResults;
+            cards = Array.from(results.querySelectorAll('article.post-card'));
+            syncLoadMore();
             return;
+        }
+        if (loadMoreWrap) {
+            loadMoreWrap.setAttribute('hidden', '');
         }
         const matches = posts.filter((post) => [post.title, post.desc, post.category, post.tags]
             .join(' ').toLowerCase().includes(query));

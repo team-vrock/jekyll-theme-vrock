@@ -79,6 +79,47 @@ input[type=text] {
   outline: 3px solid var(--accent-violet-soft);
 }
 
+section#search [hidden] {
+  display: none !important;
+}
+
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 24px auto 0;
+}
+
+.load-more-button {
+  padding: 12px 28px;
+  color: var(--heading-color);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--card-color);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.load-more-button:hover {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+  border-color: transparent;
+}
+
+.load-more-button:focus-visible {
+  border-color: var(--accent-violet);
+  outline: 3px solid var(--accent-violet-soft);
+}
+
+#search-hits article.post-card:focus {
+  border-color: var(--accent-violet);
+  outline: 3px solid var(--accent-violet-soft);
+  outline-offset: 2px;
+}
+
 .tags-link-selected {
   color: #fff;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));

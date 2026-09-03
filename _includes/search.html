@@ -6,7 +6,7 @@
 <div id="search-searchbar"></div>
 <div id="search-hits">
     {% if site.posts.size > 0 %}
-    {% for post in site.posts limit:5 %}
+    {% for post in site.posts %}
     <article class="user-projects post-card{% unless post.image %} post-card-no-image{% endunless %}">
         <h3 class="post-title">{{ post.title }}</h3>
         {% if post.image %}
@@ -30,5 +30,8 @@
         <p>No posts are published yet. Search is ready for the next article.</p>
     </div>
     {% endif %}
+</div>
+<div class="load-more-wrap" hidden>
+    <button id="load-more-posts" class="load-more-button" type="button">Load more posts</button>
 </div>
 <div id="refinement-list"></div>

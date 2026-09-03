@@ -7,9 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!config || !searchBox || !hitsContainer) return;
 
+    const PAGE_SIZE = 5;
+    const loadMoreButton = document.getElementById('load-more-posts');
+    const loadMoreWrap = loadMoreButton ? loadMoreButton.closest('.load-more-wrap') : null;
+
     let activeTag = null;
     let latestQuery = '';
     let requestTimer = null;
+    let currentPage = 0;
+    let hasMorePages = false;
+    let pending = false;
 
     const input = document.createElement('input');
     input.type = 'search';
@@ -29,17 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
 
-    const renderHits = (hits) => {
-        if (!hits || hits.length === 0) {
-            hitsContainer.innerHTML = '<div class="empty-state"><p>No posts found.</p></div>';
-            return;
+    const syncLoadMore = () => {
+        if (loadMoreWrap) {
+            loadMoreWrap.toggleAttribute('hidden', !hasMorePages || pending);
         }
+    };
 
-        hitsContainer.innerHTML = hits.map((hit) => {
-            const title = hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : escapeHtml(hit.title);
-            const content = hit._highlightResult && hit._highlightResult.content ? hit._highlightResult.content.value : escapeHtml(hit.desc || hit.content || '');
-            const image = hit.image ? `<div class="images-left"><img alt="" src="${escapeHtml(hit.image)}" /></div>` : '';
-            return `
+    const focusFirstNew = (card) => {
+        if (!card) return;
+        card.setAttribute('tabindex', '-1');
+        card.focus({ preventScroll: true });
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const hitHtml = (hit) => {
+        const title = hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : escapeHtml(hit.title);
+        const content = hit._highlightResult && hit._highlightResult.content ? hit._highlightResult.content.value : escapeHtml(hit.desc || hit.content || '');
+        const image = hit.image ? `<div class="images-left"><img alt="" src="${escapeHtml(hit.image)}" /></div>` : '';
+        return `
                 <article class="user-projects post-card">
                     ${image}
                     <div class="contents-right">
@@ -49,7 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </article>
             `;
-        }).join('');
+    };
+
+    const renderHits = (hits, append) => {
+        if (!append) {
+            if (!hits || hits.length === 0) {
+                hitsContainer.innerHTML = '<div class="empty-state"><p>No posts found.</p></div>';
+                return;
+            }
+            hitsContainer.innerHTML = hits.map(hitHtml).join('');
+            return;
+        }
+
+        if (!hits || hits.length === 0) return;
+        const firstNewIndex = hitsContainer.querySelectorAll('article.post-card').length;
+        hitsContainer.insertAdjacentHTML('beforeend', hits.map(hitHtml).join(''));
+        focusFirstNew(hitsContainer.querySelectorAll('article.post-card')[firstNewIndex]);
     };
 
     const renderFacets = (facets) => {
@@ -62,10 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     };
 
-    const search = () => {
+    const search = ({ append = false } = {}) => {
+        if (!append) {
+            currentPage = 0;
+        }
+        pending = true;
+        syncLoadMore();
+
         const body = {
             query: latestQuery,
-            hitsPerPage: 8,
+            hitsPerPage: PAGE_SIZE,
+            page: currentPage,
             facets: ['tags']
         };
 
@@ -84,18 +120,28 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then((response) => response.ok ? response.json() : Promise.reject(response))
             .then((data) => {
-                renderHits(data.hits || []);
+                hasMorePages = (data.page + 1) < (data.nbPages || 0);
+                renderHits(data.hits || [], append);
                 renderFacets(data.facets || {});
             })
             .catch(() => {
-                hitsContainer.innerHTML = '<div class="empty-state"><p>Search is currently unavailable.</p></div>';
+                if (append) {
+                    currentPage = Math.max(0, currentPage - 1);
+                } else {
+                    hasMorePages = false;
+                    hitsContainer.innerHTML = '<div class="empty-state"><p>Search is currently unavailable.</p></div>';
+                }
+            })
+            .finally(() => {
+                pending = false;
+                syncLoadMore();
             });
     };
 
     input.addEventListener('input', () => {
         latestQuery = input.value;
         window.clearTimeout(requestTimer);
-        requestTimer = window.setTimeout(search, 180);
+        requestTimer = window.setTimeout(() => search(), 180);
     });
 
     if (refinementContainer) {
@@ -105,6 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const tag = button.getAttribute('data-tag');
             activeTag = activeTag === tag ? null : tag;
             search();
+        });
+    }
+
+    if (loadMoreButton) {
+        loadMoreButton.addEventListener('click', () => {
+            if (pending || !hasMorePages) return;
+            currentPage += 1;
+            search({ append: true });
         });
     }
 
