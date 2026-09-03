@@ -27,9 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     toggleButton.addEventListener('click', () => {
+        document.documentElement.classList.add('theme-transition');
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         setTheme(next);
         localStorage.setItem('theme', next);
+        window.setTimeout(() => {
+            document.documentElement.classList.remove('theme-transition');
+        }, 350);
     });
 });

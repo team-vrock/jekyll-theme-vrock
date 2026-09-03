@@ -49,16 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
         card.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
+    const renderDate = (dateStr) => {
+        if (!dateStr) return '';
+        try {
+            return new Date(dateStr).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+        } catch (_) {
+            return '';
+        }
+    };
+
     const hitHtml = (hit) => {
         const title = hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : escapeHtml(hit.title);
         const content = hit._highlightResult && hit._highlightResult.content ? hit._highlightResult.content.value : escapeHtml(hit.desc || hit.content || '');
-        const image = hit.image ? `<div class="images-left"><img alt="" src="${escapeHtml(hit.image)}" /></div>` : '';
+        const date = renderDate(hit.date);
+        const image = hit.image
+            ? `<div class="images-left"><img alt="" src="${escapeHtml(hit.image)}" /><p class="post-date">${date}</p></div>`
+            : '';
+        const noImageDate = hit.image ? '<p class="post-date post-date-placeholder" aria-hidden="true"></p>' : `<p class="post-date">${date}</p>`;
         return `
-                <article class="user-projects post-card">
+                <article class="user-projects post-card${hit.image ? '' : ' post-card-no-image'}">
+                    <h3 class="post-title">${title}</h3>
                     ${image}
                     <div class="contents-right">
-                        <h3>${title}</h3>
                         <p>${content}</p>
+                        ${noImageDate}
                         <a class="project-link" href="${escapeHtml(hit.url)}">Read post</a>
                     </div>
                 </article>
